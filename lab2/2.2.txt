@@ -1,0 +1,9 @@
+select nazwa, masa from czekoladki where masa>20;
+
+select nazwa,masa,koszt from czekoladki where masa>20 and koszt>0.25;
+
+select nazwa, czekolada from czekoladki where (czekolada='mleczna' and (nadzienie='maliny' or nadzienie='truskawki')) or (orzechy='laskowe' and czekolada!='gorzka');
+
+select nazwa, koszt from czekoladki where koszt>0.25;
+
+select nazwa, czekolada from czekoladki where czekolada in ('mleczna','biala');
