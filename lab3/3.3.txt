@@ -1,0 +1,6 @@
+select miejscowosc from klienci where miejscowosc similar to '% %';
+
+select nazwa, telefon from klienci where telefon is not null;
+
+# zakladając, że telefon komórkowy to taki, który nie zaczyna się od 0
+select nazwa, telefon from klienci where telefon not similar to '0%';
