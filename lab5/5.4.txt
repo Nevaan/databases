@@ -1,0 +1,7 @@
+select cz.nazwa, count(*) from czekoladki cz natural join zawartosc z group by cz.nazwa order by cz.nazwa;
+
+select z.idpudelka,sum(z.sztuk) from zawartosc z join czekoladki c using (idczekoladki) where c.orzechy is null group by z.idpudelka order by z.idpudelka;
+
+select z.idczekoladki, count(z.idczekoladki) from zawartosc z group by z.idczekoladki order by count(z.idczekoladki) asc limit 1;
+
+select a.idpudelka, count(a.idpudelka) from zamowienia z natural join artykuly a group by a.idpudelka order by count(a.idpudelka) desc limit 1;

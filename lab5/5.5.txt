@@ -1,0 +1,7 @@
+select extract(quarter from z.datarealizacji), count(z.idzamowienia) as kwartał from zamowienia z group by extract(quarter from z.datarealizacji);
+
+select extract(month from datarealizacji), count(idzamowienia) from zamowienia group by extract(month from datarealizacji);
+
+select extract(week from datarealizacji), count(idzamowienia) from zamowienia group by extract(week from datarealizacji);
+
+select k.miejscowosc, count(z.idzamowienia) from klienci k natural join zamowienia z group by k.miejscowosc order by count(z.idzamowienia) desc; 

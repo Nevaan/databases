@@ -1,0 +1,10 @@
+ select datarealizacji, count(datarealizacji) from zamowienia group by datarealizacji;
+ 
+ select sum(count) from (select count(datarealizacji) from zamowienia group by datarealizacji) as count;
+ 
+ select  sum(sum) from (select z.idzamowienia, sum(a.sztuk*p.cena) from zamowienia z natural join artykuly a join pudelka p using (idpudelka) group by z.idzamowienia) as sum;
+
+/*
+	bez liczby zlozonych zamowien
+*/ 
+ select k.nazwa, sum(a.sztuk*p.cena), count(k.nazwa) from klienci k natural join zamowienia z join artykuly a using (idzamowienia) join pudelka p using (idpudelka) group by (k.nazwa) order by k.nazwa asc;

@@ -1,0 +1,15 @@
+ select count(*) from czekoladki;
+
+ select count(*) from czekoladki where nadzienie is not null;
+ 
+ select count(nadzienie) from czekoladki;
+ 
+ select idpudelka, sum(sztuk) from zawartosc group by idpudelka order by sum(sztuk) desc limit 1;
+ 
+ select idpudelka, sum(sztuk) from zawartosc group by idpudelka order by sum(sztuk) desc;
+ 
+ select z.idpudelka, sum(sztuk) from zawartosc z natural join czekoladki cz where cz.orzechy is null group by z.idpudelka order by sum(z.sztuk) desc;
+ 
+ select z.idpudelka, sum(sztuk) from zawartosc z natural join czekoladki cz where cz.czekolada = 'mleczna' group by z.idpudelka order by sum(z.sztuk) desc;
+ 
+ 

@@ -1,0 +1,9 @@
+ select p.nazwa, sum(z.sztuk*cz.masa) from pudelka p natural join zawartosc z join czekoladki cz using (idczekoladki) group by p.nazwa;
+ 
+ select p.nazwa, sum(z.sztuk*cz.masa) from pudelka p natural join zawartosc z join czekoladki cz using (idczekoladki) group by p.nazwa order by sum(z.sztuk*cz.masa) desc limit 1;
+ 
+  select avg(sum) from(select sum(z.sztuk*cz.masa) from pudelka p natural join zawartosc z join czekoladki cz using (idczekoladki) group by p.nazwa order by sum(z.sztuk*cz.masa) desc) as s;
+
+  select p.nazwa, avg(cz.masa) from pudelka p natural join zawartosc z join czekoladki cz using (idczekoladki) group by p.nazwa;
+  
+  
