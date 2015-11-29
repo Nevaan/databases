@@ -1,0 +1,3 @@
+ select  sum(waga) from (select p.idpudelka, sum(c.masa*z.sztuk)*p.stan waga from pudelka p natural join zawartosc z join czekoladki c using (idczekoladki) group by p.idpudelka) as s;
+ 
+ select sum(total_price) from (select idpudelka, cena*stan as total_price from pudelka) as s;

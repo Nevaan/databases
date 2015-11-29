@@ -1,0 +1,5 @@
+ select z.idpudelka, p.cena - sum(z.sztuk*cz.koszt) as zysk from pudelka p join zawartosc z using (idpudelka) join czekoladki cz using (idczekoladki) group by z.idpudelka, p.cena order by p.cena desc;
+ 
+ /*
+	TODO 2,3
+ */
