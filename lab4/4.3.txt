@@ -4,8 +4,6 @@ select k.nazwa, k.ulica, k.miejscowosc, p.nazwa from klienci k join zamowienia z
 
 select distinct on (k.nazwa) k.nazwa, k.ulica, k.miejscowosc from klienci k natural join zamowienia z where k.idklienta=z.idklienta;
 
-select distinct on (k.nazwa) k.nazwa, k.ulica, k.miejscowosc from klienci k natural join zamowienia z where k.idklienta!=z.idklienta;
-
 select kl.nazwa,kl.ulica,kl.miejscowosc from klienci kl except select distinct on (k.nazwa) k.nazwa, k.ulica, k.miejscowosc from klienci k natural join zamowienia z;
 
 select distinct on (k.nazwa) k.nazwa, k.ulica, k.miejscowosc from klienci k natural join zamowienia z where extract(month from z.datarealizacji) =11 and extract(year from z.datarealizacji) = 2013;
@@ -13,4 +11,3 @@ select distinct on (k.nazwa) k.nazwa, k.ulica, k.miejscowosc from klienci k natu
 select distinct on (k.nazwa) k.nazwa, k.ulica, k.miejscowosc, p.nazwa from klienci k join zamowienia z using (idklienta) join artykuly a using (idzamowienia) join pudelka p using (idpudelka) where p.nazwa in ('Kremowa fantazja','Kolekcja jesienna') and a.sztuk >= 2;
 
 select distinct on (k.nazwa) k.nazwa, k.ulica, k.miejscowosc, p.nazwa, cz.orzechy from klienci k join zamowienia z using (idklienta) join artykuly a using (idzamowienia) join pudelka p using (idpudelka) join zawartosc zaw using (idpudelka) join czekoladki cz using (idczekoladki) where cz.orzechy='migdały';
-

@@ -1,0 +1,11 @@
+select p.nazwa, p.opis, p.cena, cz.idczekoladki from pudelka p join zawartosc using (idpudelka) join czekoladki cz using (idczekoladki) where cz.idczekoladki = 'd09';
+ 
+select distinct on (p.nazwa) p.nazwa, p.opis, p.cena, cz.idczekoladki, cz.nazwa from pudelka p join zawartosc using (idpudelka) join czekoladki cz using (idczekoladki) where cz.nazwa similar to 'S%';
+
+select distinct on (p.nazwa) p.nazwa, p.opis, p.cena, cz.idczekoladki, cz.nazwa, zaw.sztuk from pudelka p join zawartosc zaw using (idpudelka) join czekoladki cz using (idczekoladki) where zaw.sztuk >4;
+
+select distinct on (p.nazwa) p.nazwa, p.opis, p.cena, cz.idczekoladki, cz.nazwa, cz.nadzienie from pudelka p join zawartosc zaw using (idpudelka) join czekoladki cz using (idczekoladki) where cz.nadzienie='truskawki'; 
+
+/*
+	TODO : od 5 do końca
+*/

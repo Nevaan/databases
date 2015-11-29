@@ -1,0 +1,5 @@
+select distinct on (p.nazwa, cz.nazwa) p.nazwa, p.opis, cz.nazwa, cz.opis from pudelka p join zawartosc z using (idpudelka) join czekoladki cz using (idczekoladki);
+
+select distinct on (p.nazwa, cz.nazwa) p.nazwa, p.opis, cz.nazwa, cz.opis from pudelka p join zawartosc z using (idpudelka) join czekoladki cz using (idczekoladki) where p.idpudelka='heav';
+
+select distinct on (p.nazwa, cz.nazwa) p.nazwa, p.opis, cz.nazwa, cz.opis from pudelka p join zawartosc z using (idpudelka) join czekoladki cz using (idczekoladki) where p.nazwa similar to '%(K|k)olekcja%';
