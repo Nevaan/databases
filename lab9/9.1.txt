@@ -1,0 +1,55 @@
+create table if not exists kwklienci (
+        idklienta varchar(10) primary key,
+        haslo varchar(10) check (length(haslo)>3) not null,
+        nazwa varchar(40) not null,
+        miasto varchar(40) not null,
+        kod char(6) not null,
+        adres varchar(40) not null,
+        email varchar(40),
+        telefon varchar(16) not null,
+        fax varchar(16) not null,
+        nip char(13),
+        regon char(9)
+);
+
+create table if not exists kwkompozycje (
+        idkompozycji char(5) primary key,
+        nazwa varchar(40) not null,
+        opis varchar(100),
+        cena numeric(10,2) check(cena>=40.00),
+        minimum integer,
+        stan integer
+);
+
+create table if not exists odbiorcykw (
+        idodbiorcy serial primary key,
+        nazwa varchar(40) not null,
+        miasto varchar(40) not null,
+        kod char(6) not null,
+        adres varchar(40) not null
+);
+
+create table if not exists zamowieniakw (
+        idzamowienia integer primary key,
+        idklienta varchar(10) references kwklienci(idklienta) not null,
+        idodbiorcy integer references odbiorcykw(idodbiorcy) not null,
+        idkompozycji char(5) references kwkompozycje(idkompozycji) not null,
+        termin date not null,
+        cena numeric(10,2),
+        zaplacone boolean,
+        uwagi varchar(200)
+);
+
+create table if not exists kwhistoria (
+	idzamowienia integer primary key,
+	idklienta varchar(10),
+	idkompozycji char(5),
+	cena numeric(10,2),
+	termin date
+);
+
+create table if not exists zapotrzebowaniekw (
+	idkompozycji char(5) references kwkompozycje(idkompozycji),
+	data date,
+	primary key (idkompozycji)
+);
